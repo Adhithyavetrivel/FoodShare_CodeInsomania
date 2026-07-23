@@ -77,10 +77,6 @@ JWT_SECRET=foodshare_secret_key_2024
 node app.js
 ```
 
-## 📷 Screenshots
-
-(Add screenshots after completing the project.)
-
 ## 👨‍💻 Author
 
 Adhithya V K
