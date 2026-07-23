@@ -1,88 +1,136 @@
-# 🍽️ FoodShare - Community Food Donation Platform
+# FoodShare – Community Food Donation Platform
+
+A simple web application that connects people who have surplus food
+with people who need it, helping reduce food wastage in the community.
 
 ## 📌 Project Overview
 
-FoodShare is a simple web application that connects food donors with people and organizations in need. The platform helps reduce food wastage by allowing restaurants, hotels, hostels, and households to donate surplus food.
+FoodShare allows registered users to either **donate** surplus food or
+**request** available donations. An admin can oversee all users,
+donations, and requests on the platform.
 
-## 🚀 Features
+This project was built as a second-year Computer Science semester project.
 
-- User Registration
-- User Login
-- Add Food Donations
-- View Available Donations
-- Request Food Donations
-- View My Donations
-- Admin Dashboard
+## 🛠️ Technology Stack
 
-## 🛠️ Technologies Used
+- **Frontend:** HTML, CSS, JavaScript, Bootstrap 5
+- **Backend:** Node.js, Express.js
+- **Database:** MySQL
+- **Authentication:** JWT (JSON Web Tokens) stored in httpOnly cookies
+- **Password Security:** bcrypt.js for password hashing
 
-- HTML
-- CSS
-- JavaScript
-- Node.js
-- Express.js
-- MySQL
-- Bootstrap
+## ✨ Features
 
-## 📁 Project Structure
+1. User Registration (Donor / Receiver)
+2. User Login (JWT-based authentication)
+3. Home Page
+4. Add Food Donation (Donor)
+5. View All Donations (Public browsing)
+6. Request a Donation (Receiver)
+7. View My Donations (Dashboard)
+8. Admin Panel (View all Users, Donations, Requests)
 
-```
+## 📂 Folder Structure
+
 FoodShare/
+├── client/ # Frontend files
+│ ├── css/
+│ │ └── style.css
+│ ├── js/
+│ │ ├── navbar.js
+│ │ ├── auth-guard.js
+│ │ ├── register.js
+│ │ ├── login.js
+│ │ ├── add-donation.js
+│ │ ├── my-donations.js
+│ │ ├── donations.js
+│ │ └── admin.js
+│ ├── index.html
+│ ├── login.html
+│ ├── register.html
+│ ├── dashboard.html
+│ ├── add-donation.html
+│ ├── donations.html
+│ └── admin.html
 │
-├── client/
-├── server/
-│   ├── routes/
-│   ├── database/
-│   ├── .env
-│   ├── app.js
-│   └── package.json
+├── server/ # Backend files
+│ ├── routes/
+│ │ ├── authRoutes.js
+│ │ ├── authMiddleware.js
+│ │ ├── donationRoutes.js
+│ │ ├── requestRoutes.js
+│ │ ├── adminRoutes.js
+│ │ └── adminMiddleware.js
+│ ├── database/
+│ │ └── db.js
+│ ├── app.js
+│ ├── package.json
+│ └── .env
 │
-└── database.sql
+└── database.sql # Database schema
+
+## 🗄️ Database Schema
+
+**users** — id, name, email, password (hashed), phone, role (donor/receiver/admin)
+
+**donations** — id, donor_id, food_name, quantity, expiry_date, pickup_address, status (available/requested/completed)
+
+**requests** — id, donation_id, receiver_id, status (pending/approved/rejected)
+
+## 🚀 How to Run This Project
+
+### Prerequisites
+- Node.js installed
+- MySQL Server installed and running
+
+### Setup Steps
+
+1. **Set up the database:**
+```bash
+   mysql -u root -p
+   SOURCE path/to/FoodShare/database.sql;
 ```
 
-## ⚙️ Installation
+2. **Configure environment variables:**
+   Open `server/.env` and set your MySQL password:
 
-1. Clone the repository
-
+   3. **Install backend dependencies:**
+```bash
+   cd server
+   npm install
 ```
-git clone https://github.com/YOUR_USERNAME/FoodShare.git
-```
+DB_PASSWORD=your_mysql_password
 
-2. Open the project
-
+4. **Start the backend server:**
+```bash
+   npm run dev
 ```
-cd FoodShare
-```
+   Server runs on `http://localhost:5000`
 
-3. Install dependencies
+5. **Run the frontend:**
+   Open `client/index.html` using VS Code's **Live Server** extension
+   (make sure it's set to use `localhost`, not `127.0.0.1`).
+   Frontend runs on `http://localhost:5500`
 
-```
-cd server
-npm install
-```
+### Creating an Admin Account
 
-4. Configure the `.env` file
+Since admin accounts aren't created through the UI (for security),
+register a normal account first, then run this SQL command:
 
-```
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=foodshare_db
-JWT_SECRET=foodshare_secret_key_2024
-```
-
-5. Run the server
-
-```
-node app.js
+```sql
+UPDATE users SET role = 'admin' WHERE email = 'your_email@example.com';
 ```
 
-## 📷 Screenshots
+Log out and log back in afterward so the new role takes effect.
 
-(Add screenshots after completing the project.)
+## 🔒 Security Notes
 
-## 👨‍💻 Author
+- Passwords are hashed using bcrypt before being stored — never saved as plain text.
+- JWT tokens are stored in httpOnly cookies, protecting them from JavaScript-based attacks.
+- Backend middleware (`verifyToken`, `verifyAdmin`) protects all sensitive routes,
+  independent of any frontend checks — frontend checks only improve user experience.
 
-Adhithya V K
+## 👤 Author
 
----
+Adhithya — B.E Computer Science (Cybersecurity), Semester Project 
+

@@ -56,7 +56,9 @@ app.get('/api/test-db', async (req, res) => {
 // Routes will be added here in later steps
  app.use('/api/auth', require('./routes/authRoutes'));
  app.use('/api/donations', require('./routes/donationRoutes'));
-// ============================================
+ app.use('/api/requests', require('./routes/requestRoutes'));
+ app.use('/api/admin', require('./routes/adminRoutes'));
+ // ============================================
 
 // ============================================
 // Start the Server
