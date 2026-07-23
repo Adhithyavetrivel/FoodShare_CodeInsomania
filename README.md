@@ -132,5 +132,5 @@ Log out and log back in afterward so the new role takes effect.
 
 ## 👤 Author
 
-Adhithya — B.E Computer Science (Cybersecurity), Semester Project 
+Adhithya — B.E Computer Science (Cybersecurity) 
 
