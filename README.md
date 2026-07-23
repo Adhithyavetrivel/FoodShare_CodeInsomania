@@ -30,44 +30,61 @@ This project was built as a second-year Computer Science semester project.
 7. View My Donations (Dashboard)
 8. Admin Panel (View all Users, Donations, Requests)
 
-## 📂 Folder Structure
+## 📁 Project Structure
 
+```text
 FoodShare/
-├── client/ # Frontend files
-│ ├── css/
-│ │ └── style.css
-│ ├── js/
-│ │ ├── navbar.js
-│ │ ├── auth-guard.js
-│ │ ├── register.js
-│ │ ├── login.js
-│ │ ├── add-donation.js
-│ │ ├── my-donations.js
-│ │ ├── donations.js
-│ │ └── admin.js
-│ ├── index.html
-│ ├── login.html
-│ ├── register.html
-│ ├── dashboard.html
-│ ├── add-donation.html
-│ ├── donations.html
-│ └── admin.html
 │
-├── server/ # Backend files
-│ ├── routes/
-│ │ ├── authRoutes.js
-│ │ ├── authMiddleware.js
-│ │ ├── donationRoutes.js
-│ │ ├── requestRoutes.js
-│ │ ├── adminRoutes.js
-│ │ └── adminMiddleware.js
-│ ├── database/
-│ │ └── db.js
-│ ├── app.js
-│ ├── package.json
-│ └── .env
+├── client/
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── images/
+│   │
+│   ├── js/
+│   │   ├── auth-guard.js
+│   │   ├── admin.js
+│   │   ├── donations.js
+│   │   ├── login.js
+│   │   ├── my-donations.js
+│   │   ├── navbar.js
+│   │   ├── register.js
+│   │   └── request.js
+│   │
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── add-donation.html
+│   ├── donations.html
+│   ├── my-donations.html
+│   ├── requests.html
+│   └── admin.html
 │
-└── database.sql # Database schema
+├── server/
+│   ├── database/
+│   │   └── db.js
+│   │
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── donationRoutes.js
+│   │   ├── requestRoutes.js
+│   │   └── adminRoutes.js
+│   │
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   └── adminMiddleware.js
+│   │
+│   ├── app.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── .env
+│   └── .gitignore
+│
+├── database.sql
+├── README.md
+└── .gitignore
+```
 
 ## 🗄️ Database Schema
 
